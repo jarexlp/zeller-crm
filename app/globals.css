@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  background-color: #05070a;
+  color: #f8fafc;
+  color-scheme: dark; /* Esto ayuda a que el navegador entienda que todo es oscuro */
+}
+
+body {
+  background-color: #05070a;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Scrollbar Táctico (Fino y oscuro) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #05070a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #facc15;
+}
