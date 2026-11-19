@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zeller CRM — Custom E-Commerce Sales, Inventory & Dispatch Platform
 
-## Getting Started
+Full-stack internal CRM built with **Next.js 16**, **React 19**, **TypeScript**, **Tailwind CSS 4**, and **Supabase (Auth + PostgreSQL)** for direct-to-consumer e-commerce operations (*Caminos 1524*).
 
-First, run the development server:
+---
+
+## Core Modules
+
+| Route / Component | Capabilities Implemented |
+| :--- | :--- |
+| **`/` (`app/page.tsx`)** | Role-aware dashboard (`admin` vs. `vendedor` via `profiles.role`), total sales revenue, total stock units, admin inventory valuation, customer count, and tiered commission brackets based on pairs sold. |
+| **`/ventas` (`app/ventas/page.tsx`)** | Fast order entry filtering live in-stock SKUs (`stock > 0`) and customer records. |
+| **`/inventario` (`app/inventario/page.tsx`)** | Live catalog search (`model`, `sku`, `color`, `size`), direct sale drawer with real-time Supabase `products.stock` decrement, and stock guardrails. |
+| **`/logistica` (`app/logistica/page.tsx`)** | Real-time fulfillment dispatch board joining `sales`, `products`, and `customers` (`PENDIENTE` → `LISTO PARA DESPACHO`). |
+| **`/clientes` (`app/clientes/page.tsx`)** | Customer registry and search connected to outbound sales follow-up. |
+| **`components/CierreDia.tsx`** | End-of-day shift closeout modal summarizing pairs sold, commission earned, and print-ready PDF receipt export. |
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js `16.1.6` (App Router), React `19.2.3`, TypeScript, Lucide React, Tailwind CSS v4
+- **Backend / Database:** Supabase Auth & PostgreSQL (`@supabase/supabase-js`)
+- **Upstream Ecosystem:** Pairs directly with the FastAPI + Gemini 2.5 + Chatwoot omnichannel sales agent documented in [`jarexlp/pm-operations-portfolio`](https://github.com/jarexlp/pm-operations-portfolio).
+
+---
+
+## Local Setup
 
 ```bash
+npm install
+# Create .env.local with:
+# NEXT_PUBLIC_SUPABASE_URL=...
+# NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
